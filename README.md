@@ -25,6 +25,7 @@ npm run coda-table --silent -- get <coda_doc_url>  -a <your_coda_api_key>
 
 # cli
 
+by default it will try to read CODA_API_TOKEN env variable
 
 Usage: codaTable get [options] <docUrl> <tableName>
 
