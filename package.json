@@ -1,0 +1,21 @@
+{
+  "name": "@pixelondesign/coda-util",
+  "version": "1.0.37",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@dengorbachev/coda-js-client": "^1.2.0",
+    "coda-js": "^4.0.0",
+    "commander": "^7.2.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "find-config": "^1.0.0"
+  }
+}
