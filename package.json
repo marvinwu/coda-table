@@ -10,11 +10,10 @@
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": ["coda","table","cli"],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dengorbachev/coda-js-client": "^1.2.0",
     "coda-js": "^4.0.0",
     "commander": "^7.2.0",
     "lodash": "^4.17.21"
