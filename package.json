@@ -6,7 +6,7 @@
   "bin": {
     "coda-table": "bin/codaTable"
   },
-  "repository": "marvinwu/coda-util",
+  "repository": "marvinwu/coda-table",
   "scripts": {
     "test": "jest"
   },
