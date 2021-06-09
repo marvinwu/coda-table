@@ -1,8 +1,12 @@
 {
-  "name": "@pixelondesign/coda-util",
-  "version": "1.0.37",
-  "description": "",
+  "name": "coda-util",
+  "version": "1.0.0",
+  "description": "simple utility for getting and setting coda table data",
   "main": "lib/index.js",
+  "bin": {
+    "coda-util": "bin/codaUtil"
+  },
+  "repository": "marvinwu/coda-util",
   "scripts": {
     "test": "jest"
   },
