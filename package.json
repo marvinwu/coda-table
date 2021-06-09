@@ -4,7 +4,7 @@
   "description": "simple utility for getting and setting coda table data",
   "main": "lib/index.js",
   "bin": {
-    "coda-util": "bin/codaUtil"
+    "coda-table": "bin/codaUtil"
   },
   "repository": "marvinwu/coda-util",
   "scripts": {
