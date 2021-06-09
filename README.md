@@ -9,9 +9,10 @@ npm install -g coda-table
 
 ```
 
-or in npm
+or local install
 
-```package.json 
+```json
+# package.json 
   "scripts": {
     "coda-table": "coda-table",
   },
