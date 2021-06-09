@@ -1,6 +1,6 @@
 {
   "name": "coda-table",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "simple utility for getting and setting coda table data",
   "main": "lib/index.js",
   "bin": {
@@ -10,7 +10,11 @@
   "scripts": {
     "test": "jest"
   },
-  "keywords": ["coda","table","cli"],
+  "keywords": [
+    "coda",
+    "table",
+    "cli"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
