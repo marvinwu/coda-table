@@ -1,6 +1,6 @@
 {
   "name": "coda-table",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "simple utility for getting and setting coda table data",
   "main": "lib/index.js",
   "bin": {
