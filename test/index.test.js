@@ -71,7 +71,7 @@ test('coda-doc-id-resolver', () => { // test when id contains underscore
    
    `
   const result = codaUtil.getDocIdFromUrl(codaUrl)
-  expect(result).toEqual(`dxBIxyQWgP_`)
+  expect(result).toEqual(`xBIxyQWgP_`)
 })
 
 test('coda-doc-id-resolver', () => {
