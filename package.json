@@ -9,7 +9,7 @@
   "repository": "marvinwu/coda-table",
   "scripts": {
     "test": "jest",
-    "publish": "npm version patch && npm publish"
+    "patch": "npm version patch && npx auto-changelog"
   },
   "keywords": [
     "coda",
