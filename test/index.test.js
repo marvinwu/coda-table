@@ -1,7 +1,7 @@
 require('dotenv').config({ path: require('find-config')('.env') }) // eslint-disable-line
 const { Coda } = require('coda-js')
 const coda = new Coda(process.env.CODA_API_TOKEN) // insert your token
-const codaUtil = require('./index')
+const codaUtil = require('../lib/index')
 jest.setTimeout(30000)
 
 test('coda basic-who am i ', async () => {
