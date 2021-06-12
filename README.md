@@ -20,7 +20,7 @@ or local install
 ```
 
 ```bash
-npm run coda-table --silent -- get <coda_doc_url>  -a <your_coda_api_key>
+npm run coda-table --silent -- get <coda_doc_url> <table_name> --apiKey <your_coda_api_key>
 ```
 
 # cli
