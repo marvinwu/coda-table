@@ -11,4 +11,7 @@ jobs:
         run: npm ci
       - name: run test
         run: npm test
+        env:
+          CODA_API_TOKEN: ${{ secrets.CODA_API_TOKEN }}
+
 
