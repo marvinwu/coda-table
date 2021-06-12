@@ -64,6 +64,16 @@ test('coda-doc-id-resolver', () => {
   expect(result).toEqual(`p2y9lb-efh`)
 })
 
+test('coda-doc-id-resolver', () => { // test when id contains underscore
+  // const docs = await coda.getDoc('g1RKjd2wjA')
+
+  const codaUrl = `https://coda.io/d/Test-NPM-Coda-Get-Table_dxBIxyQWgP_/Untitled_suBkG#_luL2l
+   
+   `
+  const result = codaUtil.getDocIdFromUrl(codaUrl)
+  expect(result).toEqual(`xBIxyQWgP_`)
+})
+
 test('coda-doc-id-resolver', () => {
   // const docs = await coda.getDoc('g1RKjd2wjA')
 

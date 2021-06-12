@@ -3,7 +3,7 @@ const program = require('commander')
 const {getDocIdFromUrl,getTable} = require('../lib/index')
 program
   .command('get <docUrl> <tableName>')
-  .option('-a, --apiKey [apiKey]', 'api key, default will try to read CODA_API from env')
+  .option('-a, --apiKey <apiKey>', 'api key, default will try to read CODA_API from env')
   .action(async (docUrl,tableName,options) => {
     const { apiKey=process.env.CODA_API_TOKEN } = options
     const docId = await getDocIdFromUrl(docUrl)
