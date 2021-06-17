@@ -1,6 +1,6 @@
 {
   "name": "coda-table",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "simple utility for getting and setting coda table data",
   "main": "lib/index.js",
   "bin": {
@@ -25,6 +25,5 @@
     "lodash": "^4.17.21",
     "find-config": "^1.0.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
