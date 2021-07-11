@@ -12,7 +12,7 @@ npm install -g coda-table
 or local install
 
 ```json
-# package.json 
+# package.json
   "scripts": {
     "coda-table": "coda-table",
   },
@@ -27,8 +27,13 @@ npm run coda-table --silent -- get <coda_doc_url> <table_name> --apiKey <your_co
 
 by default it will try to read CODA_API_TOKEN env variable
 
-Usage: codaTable get [options] <docUrl> <tableName>
+## Usage: codaTable get [options] <docUrl> <tableName>
 
-Options:
-  -a, --apiKey [apiKey]  api key, default will try to read CODA_API from env
-  -h, --help             display help for command
+Options: -a, --apiKey [apiKey] api key, default will try to read CODA_API from
+env -h, --help display help for command
+
+## Usage: codaTable write [options] <jsonFilePath> <docUrl> <tableName>
+
+Options: -a, --apiKey [apiKey] api key, default will try to read CODA_API from
+env -k, --keyColumns [keyColumns] key columns, if provided will upsert data -h,
+--help display help for command

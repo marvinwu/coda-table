@@ -1,18 +1,44 @@
-#!/usr/bin/env node
-require('dotenv').config({ path: require('find-config')('.env') }) // eslint-disable-line 
+require('dotenv').config({ path: require('find-config')('.env') }) // eslint-disable-line
 
 const program = require('commander')
-const {getDocIdFromUrl,getTable} = require('../lib/index')
-
+const { getDocIdFromUrl, getTable, writeTable } = require('../lib/index')
+const jsonfile = require('jsonfile')
 program
   .command('get <docUrl> <tableName>')
-  .option('-a, --apiKey [apiKey]', 'api key, default will try to read CODA_API from env')
-  .action(async (docUrl,tableName,options) => {
-    const { apiKey=process.env.CODA_API_TOKEN } = options
+  .option(
+    '-a, --apiKey [apiKey]',
+    'api key, default will try to read CODA_API from env'
+  )
+  .action(async (docUrl, tableName, options) => {
+    const { apiKey = process.env.CODA_API_TOKEN } = options
     const docId = await getDocIdFromUrl(docUrl)
-    const result = await getTable({docId,tableName,apiKey})
+    const result = await getTable({ docId, tableName, apiKey })
     console.log(JSON.stringify(result))
+  })
 
+program
+  .command('write <jsonFilePath> <docUrl> <tableName>')
+  .option(
+    '-a, --apiKey [apiKey]',
+    'api key, default will try to read CODA_API from env'
+  )
+  .option(
+    '-k, --keyColumns [keyColumns]',
+    'key columns, if provided will upsert data'
+  )
+  .action(async (jsonFilePath, docUrl, tableName, options) => {
+    const { apiKey = process.env.CODA_API_TOKEN, keyColumns = null } = options
+    const docId = await getDocIdFromUrl(docUrl)
+    let keys = []
+    if (keyColumns) {
+      keys = keyColumns.split(',')
+    }
+    const result = await writeTable(jsonfile.readFileSync(jsonFilePath), {
+      docId,
+      tableName,
+      apiKey,
+      keyColumns: keys
+    })
   })
 
 program.on('command:*', () => {
