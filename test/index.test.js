@@ -2,7 +2,7 @@ require('dotenv').config({ path: require('find-config')('.env') }) // eslint-dis
 const { Coda } = require('coda-js')
 const coda = new Coda(process.env.CODA_API_TOKEN) // insert your token
 const codaUtil = require('../lib/index')
-jest.setTimeout(30000)
+jest.setTimeout(60000)
 
 test('coda basic-who am i ', async () => {
   const docs = await coda.whoAmI()
@@ -64,7 +64,8 @@ test('coda-doc-id-resolver', () => {
   expect(result).toEqual(`p2y9lb-efh`)
 })
 
-test('coda-doc-id-resolver', () => { // test when id contains underscore
+test('coda-doc-id-resolver', () => {
+  // test when id contains underscore
   // const docs = await coda.getDoc('g1RKjd2wjA')
 
   const codaUrl = `https://coda.io/d/Test-NPM-Coda-Get-Table_dxBIxyQWgP_/Untitled_suBkG#_luL2l
@@ -135,7 +136,7 @@ test('codaUtil-getTableData-docId', async () => {
   ])
 })
 
-test('putdata', async () => {
+test('deleteAll', async () => {
   // const docs = await coda.getDoc('g1RKjd2wjA')
 
   const setting = {
@@ -143,5 +144,116 @@ test('putdata', async () => {
     tableName: 'write',
     apiKey: process.env.CODA_API_TOKEN
   }
-  const result = await codaUtil.writeTable(setting, {})
+
+  const result = await codaUtil.deleteAll(setting)
+})
+
+test('putdata', async () => {
+  const setting = {
+    docId: 'g1RKjd2wjA',
+    tableName: 'write',
+    apiKey: process.env.CODA_API_TOKEN
+  }
+  const data = [
+    {
+      Name: 'test1',
+      Action: 'hello world1'
+    }
+  ]
+  await codaUtil.deleteAll(setting)
+  await codaUtil.writeTable(data, setting)
+  const result = await codaUtil.getTable(setting)
+  console.log(result)
+  expect(result).toEqual(data)
+})
+
+test('putdata', async () => {
+  const setting = {
+    docId: 'g1RKjd2wjA',
+    tableName: 'write',
+    apiKey: process.env.CODA_API_TOKEN
+  }
+  const data = [
+    {
+      Name: 'test1',
+      Action: 'hello world1'
+    }
+  ]
+  await codaUtil.deleteAll(setting)
+  await codaUtil.writeTable(data, setting)
+  const result = await codaUtil.getTable(setting)
+  console.log(result)
+  expect(result).toEqual(data)
+})
+
+test('putdata upsert', async () => {
+  const setting = {
+    docId: 'g1RKjd2wjA',
+    tableName: 'write',
+    apiKey: process.env.CODA_API_TOKEN,
+    keyColumns: ['Name']
+  }
+  const data = [
+    {
+      Name: 'test1',
+      Action: 'hello world1'
+    }
+  ]
+  await codaUtil.deleteAll(setting)
+  await codaUtil.writeTable(data, setting)
+  await codaUtil.writeTable(
+    [
+      {
+        Name: 'test1',
+        Action: 'hello world2'
+      },
+      {
+        Name: 'test2',
+        Action: 'hello world3'
+      }
+    ],
+    setting
+  )
+  await new Promise((r) => setTimeout(r, 12000))
+  const result = await codaUtil.getTable(setting)
+  expect(result).toEqual([
+    { Name: 'test2', Action: 'hello world3' },
+    { Name: 'test1', Action: 'hello world2' }
+  ])
+})
+
+test('putdata upsert', async () => {
+  const setting = {
+    docId: 'g1RKjd2wjA',
+    tableName: 'write',
+    apiKey: process.env.CODA_API_TOKEN,
+    keyColumns: 'Name'
+  }
+  const data = [
+    {
+      Name: 'test1',
+      Action: 'hello world1'
+    }
+  ]
+  await codaUtil.deleteAll(setting)
+  await codaUtil.writeTable(data, setting)
+  await codaUtil.writeTable(
+    [
+      {
+        Name: 'test1',
+        Action: 'hello world2'
+      },
+      {
+        Name: 'test2',
+        Action: 'hello world3'
+      }
+    ],
+    setting
+  )
+  await new Promise((r) => setTimeout(r, 12000))
+  const result = await codaUtil.getTable(setting)
+  expect(result).toEqual([
+    { Name: 'test2', Action: 'hello world3' },
+    { Name: 'test1', Action: 'hello world2' }
+  ])
 })
