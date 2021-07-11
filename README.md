@@ -35,5 +35,11 @@ env -h, --help display help for command
 ## Usage: codaTable write [options] <jsonFilePath> <docUrl> <tableName>
 
 Options: -a, --apiKey [apiKey] api key, default will try to read CODA_API from
-env -k, --keyColumns [keyColumns] key columns, if provided will upsert data -h,
---help display help for command
+env -k, --keyColumns [keyColumns] key columns, if provided will upsert data
+-h,--help display help for command
+
+eg.
+
+```bash
+node bin/codaTable write tmp/test.json https://coda.io/d/test-fixture_dg1RKjd2wjA/writeTest_sugIu\#_lus2t write -k Name,Action
+```
