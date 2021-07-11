@@ -162,27 +162,8 @@ test('putdata', async () => {
   ]
   await codaUtil.deleteAll(setting)
   await codaUtil.writeTable(data, setting)
+  await new Promise((r) => setTimeout(r, 12000))
   const result = await codaUtil.getTable(setting)
-  console.log(result)
-  expect(result).toEqual(data)
-})
-
-test('putdata', async () => {
-  const setting = {
-    docId: 'g1RKjd2wjA',
-    tableName: 'write',
-    apiKey: process.env.CODA_API_TOKEN
-  }
-  const data = [
-    {
-      Name: 'test1',
-      Action: 'hello world1'
-    }
-  ]
-  await codaUtil.deleteAll(setting)
-  await codaUtil.writeTable(data, setting)
-  const result = await codaUtil.getTable(setting)
-  console.log(result)
   expect(result).toEqual(data)
 })
 
