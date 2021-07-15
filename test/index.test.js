@@ -201,9 +201,9 @@ test('putdata-dynamic-column', async () => {
   ]
   await codaUtil.deleteAll(setting)
   await codaUtil.writeTable(data, setting)
-  // await new Promise((r) => setTimeout(r, 12000))
-  // const result = await codaUtil.getTable(setting)
-  // expect(result).toEqual([{ Name: 'test1', Action: '' }])
+  await new Promise((r) => setTimeout(r, 12000))
+  const result = await codaUtil.getTable(setting)
+  expect(result).toEqual([{ Name: 'test1', Action: '' }])
 })
 
 test('putdata upsert', async () => {
@@ -234,7 +234,7 @@ test('putdata upsert', async () => {
     ],
     setting
   )
-  await new Promise((r) => setTimeout(r, 12000))
+  await new Promise((r) => setTimeout(r, 20000))
   const result = await codaUtil.getTable(setting)
   expect(result).toEqual([
     { Name: 'test2', Action: 'hello world3' },
