@@ -21,6 +21,7 @@
   "dependencies": {
     "coda-js": "^4.0.0",
     "commander": "^7.2.0",
+    "dotenv": "^10.0.0",
     "find-config": "^1.0.0",
     "jest": "^27.0.4",
     "jsonfile": "^6.1.0",
