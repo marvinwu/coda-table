@@ -1,5 +1,5 @@
+#!/usr/bin/env node
 require('dotenv').config({ path: require('find-config')('.env') }) 
-
 const program = require('commander')
 const { getDocIdFromUrl, getTable, writeTable } = require('../lib/index')
 const jsonfile = require('jsonfile')
