@@ -167,40 +167,43 @@ test('putdata', async () => {
   expect(result).toEqual(data)
 })
 
-test('putdata upsert', async () => {
+test('putdata-bug', async () => {
   const setting = {
     docId: 'g1RKjd2wjA',
     tableName: 'write',
-    apiKey: process.env.CODA_API_TOKEN,
-    keyColumns: ['Name']
+    apiKey: process.env.CODA_API_TOKEN
   }
   const data = [
     {
       Name: 'test1',
-      Action: 'hello world1'
+      Action: null
     }
   ]
   await codaUtil.deleteAll(setting)
   await codaUtil.writeTable(data, setting)
-  await codaUtil.writeTable(
-    [
-      {
-        Name: 'test1',
-        Action: 'hello world2'
-      },
-      {
-        Name: 'test2',
-        Action: 'hello world3'
-      }
-    ],
-    setting
-  )
   await new Promise((r) => setTimeout(r, 12000))
   const result = await codaUtil.getTable(setting)
-  expect(result).toEqual([
-    { Name: 'test2', Action: 'hello world3' },
-    { Name: 'test1', Action: 'hello world2' }
-  ])
+  expect(result).toEqual([{ Name: 'test1', Action: '' }])
+})
+
+test('putdata-dynamic-column', async () => {
+  const setting = {
+    docId: 'g1RKjd2wjA',
+    tableName: 'write',
+    apiKey: process.env.CODA_API_TOKEN
+  }
+  const data = [
+    {
+      Name: 'test1',
+      Action: null,
+      Hello: 'world'
+    }
+  ]
+  await codaUtil.deleteAll(setting)
+  await codaUtil.writeTable(data, setting)
+  // await new Promise((r) => setTimeout(r, 12000))
+  // const result = await codaUtil.getTable(setting)
+  // expect(result).toEqual([{ Name: 'test1', Action: '' }])
 })
 
 test('putdata upsert', async () => {
@@ -208,7 +211,7 @@ test('putdata upsert', async () => {
     docId: 'g1RKjd2wjA',
     tableName: 'write',
     apiKey: process.env.CODA_API_TOKEN,
-    keyColumns: 'Name'
+    keyColumns: ['Name']
   }
   const data = [
     {
