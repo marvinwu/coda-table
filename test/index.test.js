@@ -162,7 +162,7 @@ test('putdata', async () => {
   ]
   await codaUtil.deleteAll(setting)
   await codaUtil.writeTable(data, setting)
-  await new Promise((r) => setTimeout(r, 12000))
+  await new Promise((r) => setTimeout(r, 20000))
   const result = await codaUtil.getTable(setting)
   expect(result).toEqual(data)
 })
@@ -181,7 +181,7 @@ test('putdata-bug', async () => {
   ]
   await codaUtil.deleteAll(setting)
   await codaUtil.writeTable(data, setting)
-  await new Promise((r) => setTimeout(r, 12000))
+  await new Promise((r) => setTimeout(r, 20000))
   const result = await codaUtil.getTable(setting)
   expect(result).toEqual([{ Name: 'test1', Action: '' }])
 })
@@ -200,7 +200,7 @@ test('putdata-bug-1', async () => {
   ]
   await codaUtil.deleteAll(setting)
   await codaUtil.writeTable(data, setting)
-  await new Promise((r) => setTimeout(r, 12000))
+  await new Promise((r) => setTimeout(r, 20000))
   const result = await codaUtil.getTable(setting)
   expect(result).toEqual([{ Name: 'test1', Action: '' }])
 })
@@ -220,7 +220,7 @@ test('putdata-dynamic-column', async () => {
   ]
   await codaUtil.deleteAll(setting)
   await codaUtil.writeTable(data, setting)
-  await new Promise((r) => setTimeout(r, 12000))
+  await new Promise((r) => setTimeout(r, 20000))
   const result = await codaUtil.getTable(setting)
   expect(result).toEqual([{ Name: 'test1', Action: '' }])
 })
