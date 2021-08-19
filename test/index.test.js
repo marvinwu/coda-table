@@ -186,6 +186,25 @@ test('putdata-bug', async () => {
   expect(result).toEqual([{ Name: 'test1', Action: '' }])
 })
 
+test('putdata-bug-1', async () => {
+  const setting = {
+    docUrl: 'https://coda.io/d/test-fixture_dg1RKjd2wjA/writeTest_sugIu#_luD7m',
+    tableName: 'write',
+    apiKey: process.env.CODA_API_TOKEN
+  }
+  const data = [
+    {
+      Name: 'test1',
+      Action: null
+    }
+  ]
+  await codaUtil.deleteAll(setting)
+  await codaUtil.writeTable(data, setting)
+  await new Promise((r) => setTimeout(r, 12000))
+  const result = await codaUtil.getTable(setting)
+  expect(result).toEqual([{ Name: 'test1', Action: '' }])
+})
+
 test('putdata-dynamic-column', async () => {
   const setting = {
     docId: 'g1RKjd2wjA',
